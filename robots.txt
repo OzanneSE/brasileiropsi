@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ozannese.github.io/brasileiropsi/sitemap.xml
+Sitemap: https://brasileiropsi.com.br/sitemap.xml
