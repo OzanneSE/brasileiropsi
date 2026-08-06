@@ -139,74 +139,67 @@ header{position:sticky;top:0;z-index:90;background:rgba(247,241,228,.9);backdrop
 @keyframes aparece{from{opacity:0}to{opacity:1}}
 
 
-/* ============ ABERTURA: retrato em cena ============ */
-.palco{
-  background:linear-gradient(180deg,#EAF3FA 0%,var(--areia) 62%);
-  padding:2.6rem 0 0;text-align:center;overflow:hidden
-}
-.palco .selo-topo{
-  font-family:'Fraunces',serif;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
-  color:var(--folha);margin-bottom:1.2rem
-}
-.retrato-palco{
-  position:relative;width:min(520px,86vw,40vh);margin:0 auto;
-  opacity:0;transform:translateY(26px) scale(.985);
-  animation:entraRetrato 1.5s cubic-bezier(.16,.7,.24,1) .12s forwards
-}
-@keyframes entraRetrato{to{opacity:1;transform:none}}
-.retrato-palco img{
-  width:100%;aspect-ratio:2/3;object-fit:cover;
-  border-radius:290px 290px 26px 26px;
-  box-shadow:0 38px 90px rgba(19,74,107,.32);position:relative;z-index:1
-}
-.retrato-palco .beira{
-  position:absolute;inset:-16px;border:1.5px solid rgba(19,74,107,.28);
-  border-radius:304px 304px 36px 36px;pointer-events:none;z-index:2
-}
-.retrato-palco .folhinha{position:absolute;z-index:3;opacity:.9}
-.placa{
-  position:absolute;z-index:4;left:50%;bottom:-1.5rem;transform:translateX(-50%);
-  background:var(--papel);border:var(--linha);border-radius:999px;
-  padding:.55rem 1.6rem;white-space:nowrap;box-shadow:0 12px 34px rgba(19,74,107,.16)
-}
-.placa b{font-family:'Fraunces',serif;font-size:1rem;color:var(--mar);display:block;line-height:1.2}
-.placa small{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--folha)}
-.rolar{
-  margin:3.2rem auto 0;display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;
-  font-family:'Fraunces',serif;color:rgba(19,74,107,.5);padding-bottom:2.6rem
-}
-.rolar span{display:block;width:1px;height:2.6rem;background:linear-gradient(180deg,rgba(19,74,107,.45),transparent);animation:desce 2.4s ease-in-out infinite}
-@keyframes desce{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
-@media(prefers-reduced-motion:reduce){.retrato-palco{opacity:1;transform:none;animation:none}.rolar span{animation:none}}
+/* ============ ABERTURA · a foto fica, o texto passa ============ */
+.cena{position:relative}
+.fundo{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;z-index:0}
+.fundo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+@media(max-width:899px){.fundo img{object-position:50% 20%}}
+.veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,58,86,.22) 0%,rgba(14,58,86,.44) 52%,rgba(14,58,86,.70) 100%)}
+.veu-extra{position:absolute;inset:0;opacity:var(--escurece,0);transition:opacity .16s linear;
+  background:linear-gradient(102deg,rgba(9,38,58,.92) 0%,rgba(9,38,58,.66) 44%,rgba(9,38,58,.14) 76%)}
+@media(max-width:899px){.veu-extra{background:linear-gradient(180deg,rgba(9,38,58,.50) 0%,rgba(9,38,58,.90) 100%)}}
+.passa{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh}
+.tela{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end}
+.tela-fala{justify-content:center}
+.tela .wrap{width:100%}
 
-/* ---- a fala, em cascata ---- */
-.fala{background:var(--areia);padding:1rem 0 0;text-align:center}
-.fala .dentro{padding-bottom:5rem}
-.fala .dentro{max-width:44rem;margin:0 auto}
-.fala h1{
-  font-family:'Fraunces',serif;font-size:clamp(2.2rem,5.4vw,4rem);font-weight:600;
-  line-height:1.06;letter-spacing:-.022em;color:var(--tinta);margin-bottom:1.6rem
-}
-.fala h1 em{font-style:italic;font-weight:400;color:var(--mar)}
-.fala .lead{font-size:1.3rem;font-weight:300;color:var(--tinta-dim);max-width:34rem;margin:0 auto 2.4rem}
-.fala .ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.fala .selos{
-  display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;
-  padding-top:1.8rem;border-top:var(--linha);font-size:.98rem;color:var(--tinta-dim)
-}
-.fala .selos b{color:var(--mar);font-family:'Fraunces',serif;display:block;font-size:1.05rem}
+/* primeira tela: só ela */
+.assinatura{padding-bottom:1.3rem}
+.assinatura .etiqueta{color:var(--ceu-claro)}
+.assinatura .etiqueta::before{background:linear-gradient(90deg,transparent,var(--ceu-claro))}
+.assinatura .nome{font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;color:var(--areia);margin:.7rem 0 .15rem;line-height:1.15}
+.assinatura .crp{font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(191,220,238,.92)}
+.rolar{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding-bottom:2.1rem;
+  font-family:'Fraunces',serif;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(247,241,228,.66)}
+.rolar i{display:block;width:1px;height:2.4rem;background:linear-gradient(180deg,rgba(247,241,228,.7),transparent);animation:desce 2.4s ease-in-out infinite}
+@keyframes desce{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* segunda tela: a fala */
+.tela-fala .dentro{max-width:44rem;padding:3rem 0}
+.tela-fala .etiqueta{color:var(--ceu-claro)}
+.tela-fala .etiqueta::before{background:linear-gradient(90deg,transparent,var(--ceu-claro))}
+.tela-fala h1{font-family:'Fraunces',serif;font-size:clamp(2.2rem,5.4vw,4rem);font-weight:600;line-height:1.06;
+  letter-spacing:-.022em;color:var(--areia);margin:1rem 0 1.4rem;text-shadow:0 2px 30px rgba(9,38,58,.5)}
+.tela-fala h1 em{font-style:italic;font-weight:400;color:var(--ceu-claro)}
+.tela-fala .lead{font-size:1.3rem;font-weight:300;color:rgba(247,241,228,.93);max-width:33rem;margin-bottom:2.2rem}
+.tela-fala .ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.tela-fala .selos{display:flex;gap:2rem;flex-wrap:wrap;margin-top:2.8rem;padding-top:1.6rem;
+  border-top:1px solid rgba(247,241,228,.24);font-size:.96rem;color:rgba(247,241,228,.8)}
+.tela-fala .selos b{color:var(--ceu-claro);font-family:'Fraunces',serif;display:block;font-size:1.04rem}
+.btn-claro{border:1.5px solid rgba(247,241,228,.62);color:var(--areia);background:transparent}
+.btn-claro:hover{background:var(--areia);color:var(--mar-fundo);transform:translateY(-2px)}
 
 /* cascata: cada peça sobe sozinha, com respiro entre elas */
-.sobe{opacity:0;transform:translateY(34px);transition:opacity 1.15s cubic-bezier(.2,.65,.2,1),transform 1.15s cubic-bezier(.2,.65,.2,1)}
+.sobe{opacity:0;transform:translateY(34px);transition:opacity 1.1s cubic-bezier(.2,.65,.2,1),transform 1.1s cubic-bezier(.2,.65,.2,1)}
 .sobe.on{opacity:1;transform:none}
-.s1{transition-delay:0s}.s2{transition-delay:.3s}.s3{transition-delay:.6s}.s4{transition-delay:.9s}
-@media(prefers-reduced-motion:reduce){.sobe{opacity:1;transform:none;transition:none}}
+.s1{transition-delay:0s}.s2{transition-delay:.28s}.s3{transition-delay:.56s}.s4{transition-delay:.84s}
+
+/* cabeçalho claro enquanto passa sobre a foto */
+header.sobre-foto{background:transparent;backdrop-filter:none;border-bottom-color:rgba(247,241,228,.18)}
+header.sobre-foto .marca{color:var(--areia)}
+header.sobre-foto .marca small{color:var(--ceu-claro)}
+header.sobre-foto .marca svg circle{stroke:#BFDCEE}
+header.sobre-foto .marca svg path{stroke:#9FCBB4}
+header.sobre-foto .nav ul button{color:rgba(247,241,228,.82)}
+header.sobre-foto .nav ul button:hover{color:#fff;background:rgba(247,241,228,.14)}
+header.sobre-foto .nav ul button[aria-selected="true"]{background:var(--areia);color:var(--mar-fundo)}
+header.sobre-foto .nav ul{border-top-color:rgba(247,241,228,.2)}
+header.sobre-foto .btn-mar{background:var(--areia);color:var(--mar-fundo);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+@media(prefers-reduced-motion:reduce){.sobe{opacity:1;transform:none;transition:none}.rolar i{animation:none}}
 @media(max-width:760px){
-  .rolar{margin-top:3.2rem}
-  .fala .dentro{padding-bottom:3.4rem}
-  .retrato-palco .beira{inset:-9px;border-radius:296px 296px 30px 30px}
-  .fala .selos{gap:1.2rem;flex-direction:column}
+  .tela-fala .selos{gap:1rem;flex-direction:column}
+  .tela-fala .dentro{padding:2rem 0}
 }
 
 /* hero (abas internas) */
@@ -399,42 +392,51 @@ footer button.link-rodape:hover{color:#fff}
 <!-- ================================================================ -->
 <main id="inicio" class="aba ativa">
 
-  <!-- ABERTURA · o retrato primeiro, a fala depois -->
-  <section class="palco">
-    <div class="wrap">
-      <div class="selo-topo">Raiz · Ciência · Céu Aberto</div>
-      <div class="retrato-palco">
-        <span class="beira"></span>
-        <svg class="folhinha" style="top:-26px;right:2%" width="46" height="46" viewBox="0 0 40 40" fill="none"><path d="M20 36C20 22 26 10 36 4 34 18 28 30 20 36Z" fill="#3E7C59" opacity=".85"/><path d="M20 36C20 24 14 12 4 6c2 14 8 24 16 30Z" fill="#6FA98A" opacity=".7"/></svg>
-        <img src="img/priscila-retrato.jpg"
-             srcset="img/priscila-retrato-sm.jpg 700w, img/priscila-retrato.jpg 1200w"
-             sizes="(max-width:760px) 86vw, 520px"
-             fetchpriority="high" width="1200" height="1800"
+  <!-- ABERTURA · a foto fica, o texto passa por cima -->
+  <section class="cena" id="cena">
+    <div class="fundo">
+      <picture>
+        <source media="(min-width:1500px)" srcset="img/priscila-capa.jpg">
+        <source media="(min-width:900px)"  srcset="img/priscila-capa-sm.jpg">
+        <source media="(min-width:500px)"  srcset="img/priscila-retrato.jpg">
+        <img src="img/priscila-retrato-sm.jpg" fetchpriority="high"
              alt="Priscila Brasileiro, psicóloga, diante de tecidos africanos">
-        <span class="placa"><b>Priscila Brasileiro</b><small>Psicóloga · CRP 05/51361</small></span>
-      </div>
-      <div class="rolar" aria-hidden="true"><span></span>Role</div>
+      </picture>
+      <div class="veu"></div>
+      <div class="veu-extra" id="veuExtra"></div>
     </div>
-  </section>
 
-  <section class="fala">
-    <div class="wrap dentro">
-      <h1 class="sobe s1">Uma escuta em que você <em>cabe inteira</em></h1>
-      <p class="lead sobe s2">Psicoterapia online com Gestalt-terapia e escuta racializada, para pessoas adultas — com foco em diagnóstico tardio e neurodivergência.</p>
-      <div class="ctas sobe s3">
-        <a class="btn btn-whats" data-zap="inicio">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6c-.1.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg>
-          Falar com a Priscila
-        </a>
-        <button class="btn btn-linha" onclick="abrir('sobre')">Me conhecer primeiro</button>
+    <div class="passa">
+      <!-- primeira tela: só ela -->
+      <div class="tela">
+        <div class="wrap assinatura">
+          <span class="etiqueta">Raiz · Ciência · Céu Aberto</span>
+          <p class="nome">Priscila Brasileiro</p>
+          <p class="crp">Psicóloga · CRP 05/51361</p>
+        </div>
+        <div class="rolar" aria-hidden="true"><i></i>Role</div>
       </div>
-      <div class="selos sobe s4">
-        <span><b>CRP 05/51361</b>registro ativo</span>
-        <span><b>PUC-Rio</b>Gestalt-terapia</span>
-        <span><b>100% online</b>Brasil e exterior</span>
+
+      <!-- segunda tela: a fala, em cascata -->
+      <div class="tela tela-fala">
+        <div class="wrap dentro">
+          <h1 class="sobe s1">Uma escuta em que você <em>cabe inteira</em></h1>
+          <p class="lead sobe s2">Psicoterapia online com Gestalt-terapia e escuta racializada, para pessoas adultas — com foco em diagnóstico tardio e neurodivergência.</p>
+          <div class="ctas sobe s3">
+            <a class="btn btn-whats" data-zap="inicio">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6c-.1.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg>
+              Falar com a Priscila
+            </a>
+            <button class="btn btn-claro" onclick="abrir('sobre')">Me conhecer primeiro</button>
+          </div>
+          <div class="selos sobe s4">
+            <span><b>CRP 05/51361</b>registro ativo</span>
+            <span><b>PUC-Rio</b>Gestalt-terapia</span>
+            <span><b>100% online</b>Brasil e exterior</span>
+          </div>
+        </div>
       </div>
     </div>
-    <svg class="onda" viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0 30C240 55 480 5 720 25s480 30 720-5v36H0Z" fill="#FDFAF3"/></svg>
   </section>
 
   <!-- reconhecimento -->
@@ -1089,6 +1091,7 @@ function abrir(id){
   try{ history.replaceState(null,'','#'+id); }catch(e){ /* file:// bloqueia replaceState */ }
   window.scrollTo({top:0,behavior:'auto'});
   revelar();
+  if(typeof aoRolar==='function') aoRolar();
 }
 
 /* ============================================================
@@ -1110,12 +1113,32 @@ function revelar(){
 
 document.querySelectorAll('.rev, .sobe').forEach(function(el){ io.observe(el); });
 
-/* barra de progresso */
+/* barra de progresso · véu que escurece · cabeçalho claro sobre a foto */
 const barra = document.getElementById('progresso');
-addEventListener('scroll',function(){
+const cena  = document.getElementById('cena');
+const veu   = document.getElementById('veuExtra');
+const topo  = document.querySelector('header');
+
+function aoRolar(){
   const h = document.documentElement;
   barra.style.width = (h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
-},{passive:true});
+
+  // só vale na aba Início, onde a cena existe e está visível
+  const ativa = document.getElementById('inicio').classList.contains('ativa');
+  if(!ativa || !cena){ if(topo) topo.classList.remove('sobre-foto'); return; }
+
+  const r = cena.getBoundingClientRect();
+  const sobreFoto = r.top <= 0 && r.bottom > 90;
+  topo.classList.toggle('sobre-foto', sobreFoto);
+
+  // o escurecimento acompanha a rolagem dentro da cena
+  const total = Math.max(1, cena.offsetHeight - innerHeight);
+  const p = Math.min(1, Math.max(0, -r.top / total));
+  veu.style.setProperty('--escurece', p.toFixed(3));
+}
+addEventListener('scroll', aoRolar, {passive:true});
+addEventListener('resize', aoRolar, {passive:true});
+aoRolar();
 
 /* abre a aba certa em link direto (#neuro etc.) */
 (function(){
